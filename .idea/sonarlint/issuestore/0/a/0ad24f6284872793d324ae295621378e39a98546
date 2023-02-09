@@ -1,0 +1,13 @@
+
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Å²Åßøÿÿÿÿ
+>
+java:S1659
+"#Declare "right" on a separate line.(Ş»‡æşÿÿÿÿ
+P	java:S125"<This block of commented-out lines of code should be removed.(öşÓe
+>
+java:S16590"#Declare "right" on a separate line.(õù¡ıÿÿÿÿ
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(†Í†Úúÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ÂĞß

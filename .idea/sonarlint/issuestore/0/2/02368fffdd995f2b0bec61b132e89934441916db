@@ -1,0 +1,7 @@
+
+o
+java:S2293	"YReplace the type specification in this constructor call with the diamond operator ("<>").(Êí‹Û
+f
+java:S1149	"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Êí‹Û
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ

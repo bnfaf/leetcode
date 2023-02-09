@@ -1,0 +1,10 @@
+
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(‹Ϋψÿÿÿÿ8΄ΜÿΜ0
+Y
+java:S1659	">Declare "d" and all following declarations on a separate line.(Ρ‚¤Μϋÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(…ª
+s	java:S135
+"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Σιωÿÿÿÿ

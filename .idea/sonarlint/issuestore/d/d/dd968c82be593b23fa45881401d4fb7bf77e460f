@@ -1,0 +1,8 @@
+
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(áÇ«úÿÿÿÿ8ó«›ÊÓ0
+^
+java:S1659"BDeclare "right" and all following declarations on a separate line.(İì´8ö«›ÊÓ0
+A
+java:S1659,"Declare "t" on a separate line.(À˜Ì“úÿÿÿÿ8Ç­›ÊÓ0
+U	java:S106-"9Replace this use of System.out or System.err by a logger.(…éØ•8Ë­›ÊÓ0

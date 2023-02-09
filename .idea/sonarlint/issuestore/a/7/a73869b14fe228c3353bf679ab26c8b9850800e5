@@ -1,0 +1,9 @@
+
+R
+java:S1854"5Remove this useless assignment to local variable "i".(ŸˆÃ8á”àåÌ0
+W
+java:S2123":Remove this increment or correct the code not to waste it.(ŸˆÃ8ÚàŞåÌ0
+Z	java:S106
+"9Replace this use of System.out or System.err by a logger.(Ğö¶üÿÿÿÿ8íÂáåÌ0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(°Áƒ‹ûÿÿÿÿ8îÂáåÌ0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(„ò¹Şüÿÿÿÿ8îÂáåÌ0

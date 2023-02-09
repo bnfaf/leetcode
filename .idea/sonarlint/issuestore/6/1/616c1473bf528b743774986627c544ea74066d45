@@ -1,0 +1,14 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(Ë­ÚÑ
+=
+java:S1659""Declare "fast" on a separate line.(ş“•åÿÿÿÿÿ
+=
+java:S1659)""Declare "fast" on a separate line.(ş“•åÿÿÿÿÿ
+S
+java:S16592">Declare "r" and all following declarations on a separate line.(á¡š
+X
+java:S1659H"BDeclare "temp1" and all following declarations on a separate line.(›¦
+7
+java:S1659_"!Declare "cur" on a separate line.(ä÷¨±
+F
+java:S1128"1Remove this unused import 'java.util.LinkedList'.(»Äğ1

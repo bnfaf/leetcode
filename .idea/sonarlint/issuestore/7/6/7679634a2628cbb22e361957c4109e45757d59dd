@@ -1,0 +1,14 @@
+
+f	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ã†
+f	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ã†
+\
+java:S1659
+"?Declare "l1" and all following declarations on a separate line.(¹ûšÃ8ïÿÛ¿Í0
+=
+java:S1659""Declare "fast" on a separate line.(ş“•åÿÿÿÿÿ
+[
+java:S1659"@Declare "cur" and all following declarations on a separate line.(½Èïÿÿÿÿÿ
+;
+java:S1659$"%Declare "l2_next" on a separate line.(¼Ã†
+<
+java:S1128"&Remove this unused import 'java.util'.(Î€ŒÙ
