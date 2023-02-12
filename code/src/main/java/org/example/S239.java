@@ -4,53 +4,32 @@ import java.util.*;
 
 public class S239{
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int n = nums.length;
-//        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
-//            @Override
-//            public int compare(int[] ints, int[] t1) {
-//                return ints[0] != t1[0] ? t1[0] - ints[0] : t1[0] - ints[0];
-//            }
-//        });
-//        int[] ans = new int[n-k+1];
-//        for (int i = 0; i < k; i++) {
-//            pq.offer(new int[] {nums[i], i});
-//        }
-//        for (int i = k; i < n; i++) {
-//            pq.offer(new int[] {nums[i], i});
-//            while (pq.peek()[1] <= i-k){
-//                pq.poll();
-//            }
-//            ans[i-k+1] = pq.peek()[0];
-//        }
-//        return ans;
-        Deque<Integer> deque = new ArrayDeque<>();
+        int[] res = new int[nums.length-k+1];
+        Deque<Integer> deque = new LinkedList<Integer>();
         for (int i = 0; i < k; i++) {
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]){
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]){
                 deque.pollLast();
             }
-            deque.offerLast(i);
+            deque.addLast(i);
         }
-        int[] ans = new int[n-k+1];
-        ans[0] = nums[deque.peekFirst()];
-        for (int i = k; i < n; i++) {
-            // 清除次优
-            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]){
-                deque.pollLast();
-            }
-            // 将现有元素入队
-            deque.offerLast(i);
-            // 除去过于靠前的元素
-            while (deque.peekFirst() <= i - k){
+        res[0] = nums[deque.peekFirst()];
+        int index = 1;
+        for (int i = k; i < nums.length; i++) {
+            if (!deque.isEmpty() && i - deque.peekFirst() >= k ){
                 deque.pollFirst();
             }
-            ans[i-k+1] = nums[deque.peekFirst()];
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]){
+                deque.pollLast();
+            }
+            deque.addLast(i);
+            res[index++] = nums[deque.peekFirst()];
         }
-        return ans;
+        return res;
     }
 
     public static void main(String[] args) {
         S239 solution = new S239();
-        int[] nums = new int[]{1,3,-1,-3,5,3,6,7};
-        Arrays.stream(solution.maxSlidingWindow(nums, 3)).forEach(System.out::println);
+        int[] nums = new int[]{1, -1};
+        Arrays.stream(solution.maxSlidingWindow(nums, 1)).forEach(System.out::println);
     }
 }
