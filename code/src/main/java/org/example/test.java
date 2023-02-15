@@ -9,6 +9,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -78,7 +83,36 @@ class CglibProxyFactory {
     }
 }
 
+/**
+ * @author 10840
+ */
 public class test {
+    public static void pushWeek(){
+        //一周后的日期
+        LocalDate localDate = LocalDate.now();
+        //方法1
+        LocalDate after = localDate.plus(1, ChronoUnit.WEEKS);
+        System.out.println("一周后日期：" + after);
+        //方法2
+        LocalDate after2 = localDate.plusWeeks(1);
+        System.out.println("一周后日期：" + after);
+
+        //算两个日期间隔多少天，计算间隔多少年，多少月
+        LocalDate date1 = LocalDate.parse("2021-02-26");
+        LocalDate date2 = LocalDate.parse("2021-12-23");
+        Period period = Period.between(date1, date2);
+        System.out.println("date1 到 date2 相隔："
+                + period.getYears() + "年"
+                + period.getMonths() + "月"
+                + period.getDays() + "天");
+        //打印结果是 “date1 到 date2 相隔：0年9月27天”
+        //这里period.getDays()得到的天是抛去年月以外的天数，并不是总天数
+        //如果要获取纯粹的总天数应该用下面的方法
+        long day = date2.toEpochDay() - date1.toEpochDay();
+        System.out.println(date1 + "和" + date2 + "相差" + day + "天");
+        //打印结果：2021-02-26和2021-12-23相差300天
+    }
+
 
     public static void main(String[] args) {
         // JDK动态代理
@@ -93,12 +127,32 @@ public class test {
 //        assert a.equals(b);
 //        System.out.println(a.multiply(b));
 //        System.out.println(a.compareTo(b));
-        Integer [] myArray = { 1, 2, 3 };
-        List myList = Arrays.stream(myArray).collect(Collectors.toList());
-        System.out.println(myList);
-        int[] myarray = {1, 2, 3};
-        List<Integer> list = Arrays.stream(myarray).boxed().collect(Collectors.toList());
-        System.out.println(list.getClass());
+//        Integer [] myArray = { 1, 2, 3 };
+//        List myList = Arrays.stream(myArray).collect(Collectors.toList());
+//        System.out.println(myList);
+//        int[] myarray = {1, 2, 3};
+//        List<Integer> list = Arrays.stream(myarray).boxed().collect(Collectors.toList());
+//        System.out.println(list.getClass());
+//        Integer i = null;
+//        Optional.ofNullable(i).ifPresent(t -> System.out.println(t.intValue()));
+//
+//        int j = 4;
+//        Optional.ofNullable(j).ifPresent(t -> System.out.println(t.intValue()));
+//        LocalDate date = LocalDate.of(2021, 1, 26);
+//        System.out.println(date);
+//        LocalDate date1 = LocalDate.parse("2021-01-26");
+//        System.out.println(date1);
+//
+//        LocalDateTime dateTime = LocalDateTime.of(2021, 1, 26, 12, 12, 22);
+//        System.out.println(dateTime);
+//        LocalDateTime dateTime1 = LocalDateTime.parse("2021-01-26T12:12:22");
+//        System.out.println(dateTime1);
+//
+//        LocalTime time = LocalTime.of(12, 12, 22);
+//        System.out.println(time);
+//        LocalTime parse = LocalTime.parse("12:12:22");
+//        System.out.println(parse);
+        pushWeek();
 
     }
 }
