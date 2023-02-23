@@ -10,18 +10,21 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 interface SmsService {
     String send(String message);
 }
 class SmsServiceImpl {
+    public SmsServiceImpl(){
+        System.out.println("init service");
+    }
+    public SmsServiceImpl(String str){
+        System.out.println(str);
+    }
     public String send(String message) {
         System.out.println("send message:" + message);
         return message;
@@ -114,7 +117,9 @@ public class test {
     }
 
 
+
     public static void main(String[] args) {
+
         // JDK动态代理
 //        SmsService smsService = (SmsService) JdkProxyFactory.getProxy(new SmsServiceImpl());
 //        smsService.send("java");
@@ -152,7 +157,7 @@ public class test {
 //        System.out.println(time);
 //        LocalTime parse = LocalTime.parse("12:12:22");
 //        System.out.println(parse);
-        pushWeek();
+//        pushWeek();
 
     }
 }
