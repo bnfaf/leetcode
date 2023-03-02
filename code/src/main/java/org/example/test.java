@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.*;
 
 
 interface SmsService {
@@ -86,10 +87,40 @@ class CglibProxyFactory {
     }
 }
 
+class MyRunnable implements Runnable {
+    private String command;
+    public MyRunnable(String command){
+        this.command = command;
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " "+  this.command + " Start. Time=" + new Date());
+        processCommand();
+        System.out.println(Thread.currentThread().getName() + " "+  this.command + " End. Time=" + new Date());
+    }
+    public void processCommand(){
+        try {
+            Thread.sleep(5000);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public String toString(){
+        return this.command;
+    }
+}
+
 /**
  * @author 10840
  */
 public class test {
+    private static final int CORE_POOL_SIZE = 5;
+    private static final int MAX_POOL_SIZE = 10;
+    private static final int QUEUE_CAPACITY = 100;
+    private static final Long KEEP_ALIVE_TIME = 1L;
+
     public static void pushWeek(){
         //一周后的日期
         LocalDate localDate = LocalDate.now();
@@ -118,7 +149,39 @@ public class test {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        Future<String> submit = executorService.submit(()->{
+            try {
+                Thread.sleep(2000);
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "abc";
+        });
+        String s = submit.get();
+        System.out.println(s);
+        executorService.shutdown();
+//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+//                CORE_POOL_SIZE,
+//                MAX_POOL_SIZE,
+//                KEEP_ALIVE_TIME,
+//                TimeUnit.SECONDS,
+//                new ArrayBlockingQueue<>(QUEUE_CAPACITY),
+//                new ThreadPoolExecutor.AbortPolicy()
+//        );
+//
+//        for (int i = 0; i < 10; i++){
+//            Runnable worker = new MyRunnable("" + i);
+//            threadPoolExecutor.execute(worker);
+//        }
+//        threadPoolExecutor.shutdown();
+//        while (!threadPoolExecutor.isTerminated()){
+//
+//        }
+//        System.out.println("Finished all threads");
+
 
         // JDK动态代理
 //        SmsService smsService = (SmsService) JdkProxyFactory.getProxy(new SmsServiceImpl());
