@@ -30,8 +30,12 @@ public class s40 {
     }
 
     public static void main(String[] args) {
-        s40 solution = new s40();
-        int[] candidates = new int[]{10,1,2,7,6,1,5};
-        System.out.println(solution.combinationSum2(candidates, 8));
+
+       try {
+           int a = 1/0;
+       }catch (Exception e) {
+           System.out.println(1);
+       }
+        System.out.println(2);
     }
 }

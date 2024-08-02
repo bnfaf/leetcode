@@ -2,45 +2,32 @@ package org.example;
 
 public class s5 {
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
-            return s;
-        }
-        int maxLen = 1, begin = 0;
-
-        // 创建dp矩阵
-        boolean[][] dp = new boolean[len][len];
-        // i-i必定可回文
-        for (int i = 0; i < len; i++) {
+        int maxLen = 1, n = s.length();
+        int start = 0;
+        boolean[][] dp  = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
             dp[i][i] = true;
         }
-        char[] charArray = s.toCharArray();
-        // 字符串长度
-        for (int L=2; L <= len; L++) {
-            //左边界
-            for (int i = 0; i < len; i++) {
-                // 右边界
-                int j = L + i - 1;
-                if (j >= len) {
+        for(int len = 2; len <= n; len++){
+            for (int i = 0; i < n; i++) {
+                int j = i+len-1;
+                if (j>=n){
                     break;
                 }
-                if (charArray[i]!=charArray[j]) {
-                    dp[i][j] = false;
-                }else {
-                    // l-1<3-> l<4 -> l=3, 2, 1
-                    if (j - i < 3) {
+                if (s.charAt(i) == s.charAt(j)){
+                    if (j-i<3){
                         dp[i][j] = true;
                     }else{
                         dp[i][j] = dp[i+1][j-1];
                     }
                 }
-                if (dp[i][j] && L> maxLen) {
-                    maxLen = L;
-                    begin = i;
+                if (dp[i][j] && len > maxLen){
+                    start = i;
+                    maxLen = len;
                 }
             }
         }
-        return s.substring(begin,begin+maxLen);
+        return s.substring(start, start+maxLen);
     }
 
     public String longestPalindrome2(String s){
@@ -79,5 +66,9 @@ public class s5 {
             right ++;
         }
         return right - left - 1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new s5().longestPalindrome("babad"));
     }
 }

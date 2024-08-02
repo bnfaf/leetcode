@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class s491 {
     List<List<Integer>> res = new ArrayList<>();
@@ -36,8 +35,11 @@ public class s491 {
     }
 
     public static void main(String[] args) {
-        s491 solution = new s491();
-        int[] nums = new int[]{1,2,3,4,5,6,7,8,9,10,1,1,1,1,1};
-        System.out.println(solution.findSubsequences(nums));
+        Object[][] nums = new Object[3][2];
+        nums[0] = new Object[]{"smith", 67};
+        nums[1] = new Object[] {"jack", 96};
+        nums[2] = new Object[] {"Tom", 70};
+        Arrays.sort(nums, (a, b)->Integer.compare((Integer) a[1], (Integer)b[1]));
+        System.out.println(Arrays.deepToString(nums));
     }
 }

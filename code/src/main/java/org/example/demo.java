@@ -1,10 +1,19 @@
 package org.example;
 
+import cn.hutool.extra.ssh.JschUtil;
+import cn.hutool.json.JSONUtil;
+import net.sf.cglib.core.CollectionUtils;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class demo {
     public static void main(String[] args) {
-        Other o = new Other();
-        final int i = new demo().addOne(1);
-        System.out.println(i);
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "b");
+        String s = map.toString();
+
     }
 
     public int addOne(final int x) {

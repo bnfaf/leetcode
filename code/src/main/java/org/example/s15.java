@@ -8,31 +8,37 @@ public class s15 {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > 0){
-                return res;
+                break;
             }
-            if (i > 0 & nums[i] == nums[i-1]){
+            if (i>0 && nums[i] == nums[i-1]){
                 continue;
             }
-            int left = i + 1, right = nums.length - 1;
-            while (right > left){
+            int left = i+1, right = nums.length-1;
+            while (left < right){
                 int sum = nums[i] + nums[left] + nums[right];
                 if (sum > 0){
-                    right -= 1;
+                    right--;
                 } else if (sum < 0) {
-                    left += 1;
+                    left ++;
                 }else{
                     res.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                    while (right > left && nums[right] == nums[right - 1]){
-                        right -= 1;
+                    while (left < right && nums[left] == nums[left+1]){
+                        left++;
                     }
-                    while (right > left && nums[left] == nums[left +1]){
-                        left += 1;
+                    while (left < right && nums[right] == nums[right-1]){
+                        right--;
                     }
-                    left += 1;
-                    right -= 1;
+                    left++;
+                    right--;
                 }
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        s15 solution = new s15();
+        int[] nums = {-1,0,1,2,-1,-4};
+        System.out.println(solution.threeSum(nums));
     }
 }

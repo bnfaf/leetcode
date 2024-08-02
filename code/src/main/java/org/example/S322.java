@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class S322 {
     public int coinChange(int[] coins, int amount) {

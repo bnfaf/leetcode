@@ -5,24 +5,23 @@ import java.util.Deque;
 import java.util.Stack;
 
 public class s538 {
+    private int sum;
     public TreeNode convertBST(TreeNode root) {
         if (root == null){
             return null;
         }
-        int sum = 0;
-        trans(root, sum);
+        sum = 0;
+        trans(root);
         return root;
     }
-    public int trans(TreeNode root, int num){
-        if (root == null){
-            return num;
+    public void trans(TreeNode root){
+        if (root == null) {
+            return;
         }
-        num = trans(root.right, num);
-        System.out.println(num);
-        num += root.val;
-        root.val = num;
-        trans(root.left, num);
-        return num;
+        trans(root.right);
+        sum += root.val;
+        root.val = sum;
+        trans(root.left);
     }
 
 }

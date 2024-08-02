@@ -30,6 +30,7 @@ public class s10 {
         return stack.size() == 1;
     }
 
+
     public static void main(String[] args) {
         String s = "()";
         System.out.println(isValid(s));

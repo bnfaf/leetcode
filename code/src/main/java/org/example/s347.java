@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class s347 {
     public int[] topKFrequent(int[] nums, int k) {
@@ -16,9 +14,15 @@ public class s347 {
             pq.add(new int[]{entry.getKey(), entry.getValue()});
         }
         for(int i = 0; i < k; i++){
-            res[i] = pq.poll()[0];
+            res[i] = Objects.requireNonNull(pq.poll())[0];
         }
         return res;
+    }
 
+    public static void main(String[] args) {
+        s347 solution = new s347();
+        int[] nums = new int[]{1, 1, 1, 2, 2, 3};
+        int k = 2;
+        System.out.println(Arrays.toString(solution.topKFrequent(nums, k)));
     }
 }

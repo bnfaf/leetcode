@@ -26,16 +26,19 @@ public class s17 {
         return res;
     }
     public void backend(String digits, int k){
-        if (digits.length() == k){
+        if (k == digits.length()){
             res.add(sb.toString());
             return;
         }
-        String[] tmp = map.get(digits.charAt(k));
-        for (int i = 0; i < tmp.length; i++) {
-            sb.append(tmp[i]);
-            backend(digits, k+1);
-            sb.deleteCharAt(i);
+        String[] strings = map.get(digits.charAt(k));
+        for (String string : strings) {
+            sb.append(string);
+            backend(digits, k + 1);
+            sb.deleteCharAt(k);
         }
+    }
 
+    public static void main(String[] args) {
+        System.out.println(new s17().letterCombinations("23"));
     }
 }

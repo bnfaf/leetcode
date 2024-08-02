@@ -1,26 +1,28 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class s20 {
     public boolean isValid(String s) {
-        if (s.isEmpty()){
-            return true;
-        }
-        Stack<Character> stack = new Stack<>();
-        Map<Character, Character> map = new HashMap<>();
-        map.put('(', ')');
-        map.put('[', ']');
-        map.put('{', '}');
-        for (char c: s.toCharArray()) {
-            if (c == '(' || c == '[' || c == '{'){
-                stack.push(map.get(c));
-            }else if (stack.isEmpty() || c != stack.pop()){
+        Deque<Character> queue = new LinkedList<>();
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        Collection<Character> values = map.values();
+        for(char c : s.toCharArray()){
+            if (queue.isEmpty() || values.contains(c)){
+                queue.add(c);
+            } else if (queue.peekLast() == map.get(c)) {
+                queue.pollLast();
+            }else{
                 return false;
             }
         }
-        return stack.isEmpty();
+        return queue.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new s20().isValid("([)]"));
     }
 }

@@ -7,16 +7,14 @@ import static java.lang.Math.max;
  */
 public class s121 {
     public int maxProfit(int[] prices) {
-        //a,b为未持有股票和持有股票的最大利润
-        int minprice = Integer.MAX_VALUE;
-        int maxprofit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            if (prices[i] < minprice) {
-                minprice = prices[i];
-            }else if (prices[i] - minprice > maxprofit){
-                maxprofit = prices[i] - minprice;
-            }
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        // 0 代表持有 1 代表未持有
+        dp[0][0] = -prices[0];
+        for (int i = 1; i < n; i++) {
+            dp[i][0] = Math.max(dp[i-1][0], -prices[i]);
+            dp[i][1] = Math.max(dp[i-1][1], dp[i-1][0]+prices[i]);
         }
-        return maxprofit;
+        return dp[n - 1][1];
     }
 }
